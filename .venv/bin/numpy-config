@@ -1,0 +1,7 @@
+#!/media/pijush/32f56b45-6498-4666-b0ad-a7737108fb12/BTP/.venv/bin/python
+import sys
+from numpy._configtool import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())

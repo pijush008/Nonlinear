@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonlinear ODE Problems Solver</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Nonlinear ODE Problems Solver</h1>
+        
+        <!-- Add novalidate to disable HTML5 validation -->
+        <form id="solveForm" novalidate>
+            <div class="form-group">
+                <label for="equation">Enter Equation f(x) or dx/dt:</label>
+                <input type="text" id="equation" name="equation" 
+                       placeholder="e.g., -x, x*(1-x), math.sin(x)" 
+                       value="-x">
+                <!-- Removed required attribute -->
+            </div>
+            
+            <div class="form-group">
+                <label for="x0">Initial Value (x₀):</label>
+                <input type="number" id="x0" name="x0" step="0.1" value="2.0">
+                <!-- Removed required attribute -->
+            </div>
+            
+            <div class="form-group">
+                <label for="method">Select Method:</label>
+                <select id="method" name="method">
+                    <!-- Removed required attribute -->
+                    <option value="newton">Newton-Raphson</option>
+                    <option value="picard">Picard Iteration</option>
+                    <option value="euler">Euler Method</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="eulerParams" style="display: none;">
+                <div class="param-row">
+                    <div class="param-group">
+                        <label for="step_size">Step Size (h):</label>
+                        <input type="number" id="step_size" name="step_size" step="0.01" value="0.1" min="0.001">
+                    </div>
+                    <div class="param-group">
+                        <label for="steps">Number of Steps:</label>
+                        <input type="number" id="steps" name="steps" value="20" min="1" max="1000">
+                    </div>
+                </div>
+                <small>Euler method: xₙ₊₁ = xₙ + h·f(xₙ). Finds roots where f(x) = 0.</small>
+            </div>
+
+            <button type="submit" id="submitBtn">Solve</button>
+        </form>
+
+        <div id="output"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

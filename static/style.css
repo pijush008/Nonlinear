@@ -1,0 +1,376 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    position: relative;
+}
+
+/* Overlay for better readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    z-index: -1;
+}
+
+/* Main Container */
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Header */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #34495e;
+    font-size: 1em;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Button Styles */
+button {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #2980b9, #3498db);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Parameter Rows for Euler Method */
+.param-row {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.param-group {
+    flex: 1;
+}
+
+.param-group label {
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+/* Output Area */
+#output {
+    margin-top: 30px;
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Status Messages */
+.loading {
+    color: #3498db;
+    text-align: center;
+    font-style: italic;
+    padding: 25px;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+    font-size: 1.1em;
+}
+
+.success {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border: 1px solid #28a745;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #155724;
+    border-left: 5px solid #28a745;
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.1);
+}
+
+.error {
+    background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+    border: 1px solid #dc3545;
+    padding: 20px;
+    border-radius: 10px;
+    color: #721c24;
+    border-left: 5px solid #dc3545;
+    box-shadow: 0 4px 15px rgba(220, 53, 69, 0.1);
+}
+
+.warning {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    border: 1px solid #ffc107;
+    padding: 20px;
+    border-radius: 10px;
+    color: #856404;
+    border-left: 5px solid #ffc107;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.1);
+}
+
+.info-box {
+    background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+    border: 1px solid #17a2b8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #0c5460;
+    border-left: 5px solid #17a2b8;
+    box-shadow: 0 4px 15px rgba(23, 162, 184, 0.1);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #e1e8ed;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+th {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9em;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+tr:hover {
+    background-color: #e3f2fd;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Euler Explanation Box */
+.euler-explanation {
+    background: linear-gradient(135deg, #e8f4fd, #d4edff);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 5px solid #3498db;
+    font-family: 'Courier New', monospace;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.1);
+}
+
+.euler-explanation strong {
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+/* Method Info Section */
+.method-info {
+    margin-bottom: 25px;
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Small Text */
+small {
+    color: #7f8c8d;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Preformatted Text */
+pre {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    border-left: 5px solid #3498db;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .param-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.5em;
+    }
+    
+    input, select, button {
+        font-size: 14px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2980b9, #3498db);
+}
+
+/* Focus states for accessibility */
+input:focus-visible, 
+select:focus-visible, 
+button:focus-visible {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white !important;
+    }
+    
+    .container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    button {
+        display: none;
+    }
+}
